@@ -37,3 +37,13 @@ for g in games:
 	print(g[0]) # 依序印出大清單(games)中的第一個小清單
 for c in game_cost:
 	print(c) #for loot 走到最後的值
+
+# 字串可以+-*/
+#'abc' + '123' = 'abc123'
+#'abc' * 3 = 'abcabcabc'
+
+with open('products.csv', 'w') as f:
+# csv 可用excel打開，多個清單好用
+	for g in games:
+		f.write(g[0] + ',' + g[1] + '\n')
+# csv 每一格格子用 ',' 區隔
