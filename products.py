@@ -24,16 +24,23 @@ products[0][0]
 
 #final
 #讓檔案執行前先讀取之前的檔案
+import os # 載入作業系統operating system
 games = []
-with open('products.csv', 'r', encoding = 'utf-8') as f:
-    for line in f:
-    	if '遊戲, 價格' in line:
-    		continue # 跳到下一個迴圈
-    	name, price = line.strip().split(',') 
+if os.path.isfile('products.csv'):
+    # isfile 檢查該程式資料夾內有沒有'products.csv'，相對路徑
+    print('讀取以前檔案')
+    with open('products.csv', 'r', encoding = 'utf-8') as f:
+	    for line in f:
+	    	if '遊戲, 價格' in line:
+	    		continue # 跳到下一個迴圈
+	    	name, price = line.strip().split(',') 
 # split == 遇到 ',' 切一刀變清單
 #切割完存成 name跟price的清單
-    	games.append([name, price])
-print(games)
+    		games.append([name, price])
+    print(games)
+else:
+	print('歡迎!初次使用')
+
 while True:
 	name = input('請輸入遊戲名稱: ')
 	if name == 'q':
