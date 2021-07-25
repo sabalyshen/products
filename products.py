@@ -25,13 +25,15 @@ products[0][0]
 #final
 #讓檔案執行前先讀取之前的檔案
 games = []
-with open('products.csv', 'r',, encoding = 'utf-8') as f:
+with open('products.csv', 'r', encoding = 'utf-8') as f:
     for line in f:
+    	if '遊戲, 價格' in line:
+    		continue # 跳到下一個迴圈
     	name, price = line.strip().split(',') 
 # split == 遇到 ',' 切一刀變清單
 #切割完存成 name跟price的清單
     	games.append([name, price])
-
+print(games)
 while True:
 	name = input('請輸入遊戲名稱: ')
 	if name == 'q':
